@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:900');
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
 /* ^ I don't think I've ever used @import in my life 'til now, but google fonts suggested it */
 header{
     text-align: center;
@@ -22,6 +23,15 @@ main{
     height: 600px;
     background: blue;
     flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.answerHeading{
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 60px;
 }
 .right{
     min-width: 400px;
