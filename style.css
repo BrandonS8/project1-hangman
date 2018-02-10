@@ -33,6 +33,16 @@ main{
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 60px;
 }
+.wordBox{
+    background: rgba(0,0,0,0);
+    border: none;
+    font-size: 30px;
+    color: white;
+    
+}
+.wordBox::placeholder{
+    color: white;
+}
 .right{
     min-width: 400px;
     height: 600px;
@@ -92,5 +102,20 @@ main{
     min-width: 400px;
     min-height: 60px;
     background: pink;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
+
+.letter{
+    text-align: center;
+    margin: 3px;
+    background-color: lightblue;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    border: 2px solid white;
+    user-select: none;
+]
 
