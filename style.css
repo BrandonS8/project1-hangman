@@ -1,0 +1,36 @@
+
+header{
+    text-align: center;
+}
+header h1{
+    font-size: 50px;
+    margin: 5px;
+}
+main{
+    display: flex;
+    flex-direction: column;
+}
+.middle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.answer{
+    min-width: 300px;
+    height: 600px;
+    background: blue;
+    flex: 2;
+}
+.man{
+    min-width: 400px;
+    height: 600px;
+    background: orange;
+    flex: 1;
+}
+.letters{
+    min-width: 400px;
+    min-height: 60px;
+    background: pink;
+}
+
