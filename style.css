@@ -1,4 +1,5 @@
-
+@import url('https://fonts.googleapis.com/css?family=Exo:900');
+/* ^ I don't think I've ever used @import in my life 'til now, but google fonts suggested it */
 header{
     text-align: center;
 }
@@ -22,12 +23,61 @@ main{
     background: blue;
     flex: 2;
 }
-.man{
+.right{
     min-width: 400px;
     height: 600px;
     background: orange;
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.man{
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Exo', sans-serif;
+}
+.head{
+    border: 8px solid black;
+    border-radius: 50%;
+    grid-column: 2;
+    grid-row: 1;
+}
+.leftarm{
+    text-align: right;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.chest{
+    border-top: 8px solid black;
+    grid-column: 2;
+    grid-row: 2;
+}
+.rightarm{
+    text-align: left;
+    grid-column: 3;
+    grid-row: 2;
+}
+.waist{
+    grid-column: 2;
+    grid-row: 3;
+    border-bottom: 8px solid black;
+}
+.leftleg{
+    text-align: right;
+    grid-column: 1;
+    grid-row: 4;
+}
+.rightleg{
+    text-align: left;
+    grid-column: 3;
+    grid-row: 4;
+}
+
 .letters{
     min-width: 400px;
     min-height: 60px;
