@@ -42,6 +42,16 @@ main{
 }
 .wordBox::placeholder{
     color: white;
+    opacity: 0.5;
+}
+.startGame{
+    border: none;
+    background: rgba(0,0,0,0);
+    text-align: center;
+    font-size: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
 }
 .right{
     min-width: 400px;

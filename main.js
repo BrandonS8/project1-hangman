@@ -22,14 +22,26 @@ alphabet.forEach(function(letter){
 startGameButton.addEventListener('click', start)
 
 function start(){
-    theAnswer = wordBox.value.toUpperCase()
-    answerHeading.innerHTML = wordBox.value.replace(/[a-zA-Z]/g, "_")
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
-    wordBox.style.display = 'none'
-    startGameButton.style.display = 'none'
-    console.log(theAnswer)
+//RegExp for checking if numbers are inputted?
+    if(wordBox.value !== ''){
+        theAnswer = wordBox.value.toUpperCase()
+        answerHeading.innerHTML = wordBox.value.replace(/[a-zA-Z]/g, "_")
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+        wordBox.style.display = 'none'
+        startGameButton.style.display = 'none'
+        console.log(theAnswer)
+    } else {
+        alert('Please enter a word')
+    }
 }
 
 function pressedLetter(){
     console.log(this.textContent)
 }
+
+wordBox.addEventListener('keypress', function(evt) { 
+    if (evt.keyCode === 13) {
+        evt.preventDefault()
+        start()
+    }
+  })
