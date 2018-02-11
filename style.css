@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:900');
 @import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
 /* ^ I don't think I've ever used @import in my life 'til now, but google fonts suggested it */
-body{
-    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("img/skyline1.jpg");
+
+html{
+    background:url("img/skyline1.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     font-family: 'Barlow Condensed', sans-serif;
+    margin: 0;
+    min-height: 100%;
 }
 
 
@@ -171,4 +176,16 @@ main{
     padding-bottom: 4px;
     border: 2px solid white;
     user-select: none;
+}
+
+@media only screen and (max-width: 700px) {
+    .right{
+        order: 1;
+        height: 300px;
+    }
+    .answer{
+        order: 2;
+        height: auto;
+        padding: 15px 0;
+    }
 }
