@@ -24,53 +24,55 @@ startGameButton.addEventListener('click', start)
 
 function start () {
   if (wordBox.value !== '') {
-      theAnswer = wordBox.value.toUpperCase()
-      theAnswerArray = wordBox.value.toUpperCase().split('')
-      hideAnswer()
-      wordBox.style.display = 'none'
-      startGameButton.style.display = 'none'
-      console.log(theAnswer)
-      console.log(theAnswerArray)
-    } else {
-      alert('Please enter a word')
-    }
+    theAnswer = wordBox.value.toUpperCase()
+    theAnswerArray = wordBox.value.toUpperCase().split('')
+    hideAnswer()
+    wordBox.style.display = 'none'
+    startGameButton.style.display = 'none'
+    console.log(theAnswer)
+    console.log(theAnswerArray)
+  } else {
+    alert('Please enter a word')
+  }
 }
 
 function pressedLetter () {
-  this.textContent
+  let pressed = this.textContent
+  let chars = document.querySelectorAll('.hiddenAnswer')
+  chars.forEach(function (letter) {
+    console.log(letter)
+    if (letter.innerHTML === pressed) {
+        letter.style.color = 'black'
+      }
+  })
 }
 
 wordBox.addEventListener('keypress', function (evt) {
   if (evt.keyCode === 13) {
-      evt.preventDefault()
-      start()
-    }
+    evt.preventDefault()
+    start()
+  }
 })
 function hideAnswer () {
   theAnswerArray.forEach(function (letter) {
-      if (letter != ' '){
+    if (letter != ' ') {
         let div = document.createElement('div')
         div.textContent = letter
         div.classList.add('hiddenAnswer')
         div.addEventListener('click', showAnswerLetter)
         answerHolder.appendChild(div)
-      } else{
+      } else {
         let div = document.createElement('div')
         div.textContent = letter
         div.classList.add('hiddenAnswer')
-        div.style.borderBottom =  'none'
+        div.style.borderBottom = 'none'
         answerHolder.appendChild(div)
       }
-    })
+  })
 }
 
-function showAnswerLetter() {
-    this.style.color = 'black'
-  }
-
-
-
-
-
+function showAnswerLetter () {
+  this.style.color = 'black'
+}
 
 //   https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
