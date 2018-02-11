@@ -88,11 +88,12 @@ main{
 }
 .startGame{
     border: none;
+    border-radius: none;
     background: rgba(0,0,0,0.6);
     text-align: center;
     font-size: 30px;
-    line-height: 30px;
-    padding: 6px;
+    line-height: 29px;
+    padding: 7px;
     height: auto;
     color: white;
 }

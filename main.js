@@ -18,22 +18,21 @@ let wrongLetters = 0
 let rightLetters = 0
 let winNumber = 0
 // generate array of letters and add click events to them
-function createLetters(){
-    alphabet.forEach(function (letter) {
-        let div = document.createElement('div')
-        div.textContent = letter
-        div.classList.add('letter')
-        div.addEventListener('click', pressedLetter)
-        letterHolder.appendChild(div)
-      })
+function createLetters () {
+  alphabet.forEach(function (letter) {
+      let div = document.createElement('div')
+      div.textContent = letter
+      div.classList.add('letter')
+      div.addEventListener('click', pressedLetter)
+      letterHolder.appendChild(div)
+    })
 }
-
 
 // start game by hiding answer
 startGameButton.addEventListener('click', start)
 
 function start () {
-    createLetters()
+  createLetters()
   if (wordBox.value !== '') {
     theAnswer = wordBox.value.toUpperCase()
     theAnswerArrayWords = wordBox.value.toUpperCase().split(' ')
@@ -47,9 +46,9 @@ function start () {
   }
 }
 
-function setWords(){
-    theAnswerArrayWords.forEach(function (word){
-    let div = document.createElement('div')
+function setWords () {
+  theAnswerArrayWords.forEach(function (word) {
+      let div = document.createElement('div')
       div.classList.add('hiddenAnswerWord')
       answerHolder.appendChild(div)
     })
@@ -63,14 +62,14 @@ function pressedLetter () {
   pressed.removeEventListener('click', pressedLetter)
   chars.forEach(function (letter) {
     if (letter.innerHTML === pressedContent) {
-     i++
+      i++
       rightLetters++
       checkWin()
       letter.style.color = 'white'
       letter.style.borderBottom = 'none'
       pressed.style.color = 'green'
       wrongCount = 0
-    } else if(i === 0 && rightLetters <= winNumber && letter.innerHTML != pressedContent){
+    } else if (i === 0 && rightLetters <= winNumber && letter.innerHTML != pressedContent) {
       wrongCount++
       wrongAnswer(pressed)
     }
@@ -87,10 +86,6 @@ function wrongAnswer (pressed) {
   }
 }
 
-
-
-
-// NOTE TO ME: last letter being right throws a wrong! fix!
 wordBox.addEventListener('keypress', function (evt) {
   if (evt.keyCode === 13) {
     evt.preventDefault()
@@ -98,7 +93,7 @@ wordBox.addEventListener('keypress', function (evt) {
   }
 })
 function hideAnswer (callback) {
-let word = document.querySelectorAll('.hiddenAnswerWord')
+  let word = document.querySelectorAll('.hiddenAnswerWord')
   let normal = /[a-zA-Z]/
   theAnswerArray.forEach(function (letter) {
     if (letter != ' ' && letter != `'` && isNaN(letter) && letter.match(normal)) {
@@ -108,9 +103,9 @@ let word = document.querySelectorAll('.hiddenAnswerWord')
       div.addEventListener('click', showAnswerLetter)
       word[currentWord].appendChild(div)
       winNumber++
-    } else if (letter === ' '){
-        currentWord++
-    }else {
+    } else if (letter === ' ') {
+      currentWord++
+    } else {
       let div = document.createElement('div')
       div.textContent = letter
       div.classList.add('hiddenAnswer')
@@ -120,7 +115,7 @@ let word = document.querySelectorAll('.hiddenAnswerWord')
       console.log(letter)
     }
   })
-callback()
+  callback()
 }
 
 function setChars () {
@@ -135,8 +130,8 @@ function showAnswerLetter () {
 
 function checkWin () {
   if (rightLetters >= winNumber) {
-      console.log('winner!')
-    }
+    console.log('winner!')
+  }
 }
 //   https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
 // https://stackoverflow.com/questions/13946651/matching-special-characters-and-letters-in-regex
@@ -146,4 +141,3 @@ function checkWin () {
 // like an object for the answer stuff
 // object for the letters
 // object for the hangman
-
