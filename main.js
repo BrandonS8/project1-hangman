@@ -52,8 +52,9 @@ function pressedLetter () {
       rightLetters++
       checkWin()
       letter.style.color = 'black'
+      letter.style.borderBottom = 'none'
       pressed.style.color = 'green'
-    } else if (i <= 0) {
+    } else if (i <= 0 && rightLetters < winNumber) {
       wrongCount++
       wrongAnswer(pressed)
     }
@@ -76,8 +77,9 @@ wordBox.addEventListener('keypress', function (evt) {
   }
 })
 function hideAnswer (callback) {
+    var normal = /[a-zA-Z]/
   theAnswerArray.forEach(function (letter) {
-    if (letter != ' ') {
+    if (letter != ' ' && letter != `'` && isNaN(letter) && letter.match(normal)) {
       let div = document.createElement('div')
       div.textContent = letter
       div.classList.add('hiddenAnswer')
@@ -88,8 +90,10 @@ function hideAnswer (callback) {
       let div = document.createElement('div')
       div.textContent = letter
       div.classList.add('hiddenAnswer')
+      div.style.color = 'black'
       div.style.borderBottom = 'none'
       answerHolder.appendChild(div)
+      console.log(letter)
     }
     callback()
   })
@@ -109,3 +113,17 @@ function checkWin(){
     }
 }
 //   https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
+// https://stackoverflow.com/questions/13946651/matching-special-characters-and-letters-in-regex
+// note to self: look more into regexp is may be more useful https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
+
+// later on split this into mulitple objects
+// like an object for the answer stuff
+// object for the letters
+//object for the hangman
+
+if(parseInt('hello')){
+    console.log(true)
+} else {
+    console.log(false)
+}

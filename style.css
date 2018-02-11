@@ -32,16 +32,17 @@ main{
     text-align: center;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .hiddenAnswer{
     color: rgba(0,0,0,0);
-    margin: 8px;
+    margin: 0 2px;
     border-bottom: 2px solid black;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 30px;
-    height: 30px;
-    width: 30px;
+    font-size: 55px;
+    height: 55px;
+    width: 40px;
 }
 
 .wordBox{
