@@ -30,9 +30,20 @@ main{
 
 .answerHeading{
     text-align: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 60px;
+    display: flex;
+    flex-wrap: wrap;
 }
+
+.hiddenAnswer{
+    color: rgba(0,0,0,0);
+    margin: 8px;
+    border-bottom: 2px solid black;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+}
+
 .wordBox{
     background: rgba(0,0,0,0);
     border: none;
@@ -127,5 +138,4 @@ main{
     font-size: 40px;
     border: 2px solid white;
     user-select: none;
-]
-
+}
