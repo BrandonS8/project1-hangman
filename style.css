@@ -123,37 +123,44 @@ main{
     border-radius: 50%;
     grid-column: 2;
     grid-row: 1;
+    opacity: 0;
 }
 .leftarm{
     text-align: right;
     grid-column: 1;
     grid-row: 2;
+    opacity: 0;
 }
 
 .chest{
     border-top: 8px solid white;
     grid-column: 2;
     grid-row: 2;
+    opacity: 0;
 }
 .rightarm{
     text-align: left;
     grid-column: 3;
     grid-row: 2;
+    opacity: 0;
 }
 .waist{
     grid-column: 2;
     grid-row: 3;
     border-bottom: 8px solid white;
+    opacity: 0;
 }
 .leftleg{
     text-align: right;
     grid-column: 1;
     grid-row: 4;
+    opacity: 0;
 }
 .rightleg{
     text-align: left;
     grid-column: 3;
     grid-row: 4;
+    opacity: 0;
 }
 
 .letters{

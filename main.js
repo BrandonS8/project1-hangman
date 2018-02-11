@@ -4,6 +4,7 @@ const startGameButton = document.querySelector('.startGame')
 const letterHolder = document.querySelector('.letters')
 const answerHolder = document.querySelector('.answerHeading')
 let chars = []
+const man = document.querySelector('.man').children
 // alphabet array
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
@@ -83,6 +84,8 @@ function wrongAnswer (pressed) {
     console.log('Wrong!' + wrongLetters)
     wrongCount = 0
     // addToMan()
+    makeMan(wrongLetters - 1)
+    checkLoss()
   }
 }
 
@@ -132,6 +135,16 @@ function checkWin () {
   if (rightLetters >= winNumber) {
     console.log('winner!')
   }
+}
+function checkLoss(){
+    if(wrongLetters >= 7){
+        console.log('You lost')
+    }
+}
+
+function makeMan(value){
+  man[value].style.opacity = 1
+
 }
 //   https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
 // https://stackoverflow.com/questions/13946651/matching-special-characters-and-letters-in-regex
