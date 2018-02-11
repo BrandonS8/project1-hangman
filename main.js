@@ -10,9 +10,11 @@ const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M
 // variable to hold answer
 let theAnswer = ''
 let theAnswerArray = []
+let theAnswerArrayWords = []
+let currentWord = 0
 // wrong counter
 let wrongLetters = 0
-//right counter
+// right counter
 let rightLetters = 0
 let winNumber = 0
 // generate array of letters and add click events to them
@@ -31,7 +33,9 @@ startGameButton.addEventListener('click', start)
 function start () {
   if (wordBox.value !== '') {
     theAnswer = wordBox.value.toUpperCase()
+    theAnswerArrayWords = wordBox.value.toUpperCase().split(' ')
     theAnswerArray = wordBox.value.toUpperCase().split('')
+    setWords()
     hideAnswer(setChars)
     wordBox.style.display = 'none'
     startGameButton.style.display = 'none'
@@ -41,6 +45,16 @@ function start () {
     alert('Please enter a word')
   }
 }
+
+function setWords(){
+    theAnswerArrayWords.forEach(function (word){
+    let div = document.createElement('div')
+      div.classList.add('hiddenAnswerWord')
+      div.addEventListener('click', showAnswerLetter)
+      answerHolder.appendChild(div)
+    })
+}
+
 let wrongCount = 0
 function pressedLetter () {
   let pressedContent = this.textContent
@@ -51,7 +65,7 @@ function pressedLetter () {
       i++
       rightLetters++
       checkWin()
-      letter.style.color = 'black'
+      letter.style.color = 'white'
       letter.style.borderBottom = 'none'
       pressed.style.color = 'green'
     } else if (i <= 0 && rightLetters < winNumber) {
@@ -77,22 +91,26 @@ wordBox.addEventListener('keypress', function (evt) {
   }
 })
 function hideAnswer (callback) {
-    var normal = /[a-zA-Z]/
+let word = document.querySelectorAll('.hiddenAnswerWord')
+  let normal = /[a-zA-Z]/
+  console.log(word)
   theAnswerArray.forEach(function (letter) {
     if (letter != ' ' && letter != `'` && isNaN(letter) && letter.match(normal)) {
       let div = document.createElement('div')
       div.textContent = letter
       div.classList.add('hiddenAnswer')
       div.addEventListener('click', showAnswerLetter)
-      answerHolder.appendChild(div)
+      word[currentWord].appendChild(div)
       winNumber++
-    } else {
+    } else if (letter === ' '){
+        currentWord++
+    }else {
       let div = document.createElement('div')
       div.textContent = letter
       div.classList.add('hiddenAnswer')
-      div.style.color = 'black'
+      div.style.color = 'white'
       div.style.borderBottom = 'none'
-      answerHolder.appendChild(div)
+      word[currentWord].appendChild(div)
       console.log(letter)
     }
     callback()
@@ -104,26 +122,26 @@ function setChars () {
 }
 
 function showAnswerLetter () {
-  this.style.color = 'black'
+  this.style.color = 'white'
+  this.style.borderBottom = 'none'
 }
 
-function checkWin(){
-    if(rightLetters === winNumber){
-        console.log('winner!')
+function checkWin () {
+  if (rightLetters === winNumber) {
+      console.log('winner!')
     }
 }
 //   https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
 // https://stackoverflow.com/questions/13946651/matching-special-characters-and-letters-in-regex
 // note to self: look more into regexp is may be more useful https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
-
 // later on split this into mulitple objects
 // like an object for the answer stuff
 // object for the letters
-//object for the hangman
+// object for the hangman
 
-if(parseInt('hello')){
-    console.log(true)
+if (parseInt('hello')) {
+  console.log(true)
 } else {
-    console.log(false)
+  console.log(false)
 }
