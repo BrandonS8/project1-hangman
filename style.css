@@ -74,6 +74,7 @@ main{
     border-bottom: none;
     font-size: 55px;
     height: 55px;
+    width: auto;
 }
 .wordBox{
     background: rgba(0,0,0,0.4);
@@ -102,6 +103,8 @@ main{
     padding: 7px;
     height: auto;
     color: white;
+    -webkit-appearance:none;
+    /* https://stackoverflow.com/questions/5263260/stop-safari-mobile-from-giving-input-buttons-rounded-corners */
 }
 .startGame:hover{
     background: rgba(255,255,255,0.4);
@@ -193,8 +196,8 @@ main{
 }
 
 .winloss{
-    font-size: 60px;
-    color: green;
+    font-size: 70px;
+    padding: 8px;
     background: white;
     display: none;
 }

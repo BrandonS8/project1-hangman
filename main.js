@@ -146,16 +146,15 @@ function makeMan(value){
 }
 
 function winLose(value){
+    letterHolder.style.display = 'none'
+    document.querySelector('.answer').style.flexDirection = 'column'
+    document.querySelector('.right').style.display = 'none'
+    document.querySelector('.winloss').style.display = 'inline'
     if (value === 'win'){
-        document.querySelector('.right').style.display = 'none'
-        document.querySelector('.answer').style.flexDirection = 'column'
-        document.querySelector('.winloss').style.display = 'inline'
         document.querySelector('.winloss').style.color = 'green'
         document.querySelector('.winloss').textContent = `YOU WIN!` 
+        showAnswer()
     } else if (value === 'lose'){
-        document.querySelector('.right').style.display = 'none'
-        document.querySelector('.answer').style.flexDirection = 'column'
-        document.querySelector('.winloss').style.display = 'inline'
         document.querySelector('.winloss').style.color = 'red'
         document.querySelector('.winloss').textContent = `YOU LOSE!` 
         showAnswer()
