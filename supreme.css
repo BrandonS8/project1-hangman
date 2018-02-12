@@ -1,26 +1,50 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:900');
 @import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700i');
 /* ^ I don't think I've ever used @import in my life 'til now, but google fonts suggested it */
 
 html{
-    background:url("img/skyline1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-family: 'Barlow Condensed', sans-serif;
+    background: white;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     min-height: 100%;
 }
-
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+.themeButton{
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+    border-radius: none;
+    background: red;
+    text-align: center;
+    font-size: 10px;
+    line-height: 10px;
+    padding: 7px;
+    height: auto;
+    color: white;
+    -webkit-appearance:none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 0 5px 5px;
+}
 
 header{
     text-align: center;
     margin-top: 25px;
 }
 header h1{
+    display: block;
+    background: red;
     font-size: 80px;
-    padding: 0;
-    margin: 0px;
+    padding: 18px;
+    width: 400px;
+    margin: 0 auto;
     color: white;
 }
 main{
@@ -56,13 +80,15 @@ main{
     display: block;
     color: rgba(0,0,0,0);
     padding: 0 10px;
+    margin-top: 8px;
     font-size: 55px;
     display: flex;
     justify-content: center;
+    background: red;
 }
 .hiddenAnswer{
     color: rgba(0,0,0,0);
-    margin: 0 2px;
+    margin: 5px;
     border-bottom: 2px solid white;
     font-size: 55px;
     height: 55px;
@@ -70,36 +96,39 @@ main{
 }
 .unhiddenAnswer{
     color: white;
-    margin: 0;
+    margin: 6px 2px;
     border-bottom: none;
     font-size: 55px;
     height: 55px;
-    width: auto;
+    width: 40px;
 }
 .wordBox{
-    background: rgba(0,0,0,0.4);
+    background: red;
     padding: 4px;
     border: none;
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 26px;
+    line-height: 26px;
     color: white;
     text-align: center;
+    font-family: 'Open Sans', sans-serif;
     
 }
 .wordBox::placeholder{
     color: white;
     opacity: 0.5;
+    font-family: 'Open Sans', sans-serif;
 }
 .wordBox:hover{
-    background: rgba(0,0,0,0.6);
+    background: red;
 }
 .startGame{
+    font-family: 'Open Sans', sans-serif;
     border: none;
     border-radius: none;
-    background: rgba(0,0,0,0.6);
+    background: red;
     text-align: center;
     font-size: 30px;
-    line-height: 29px;
+    line-height: 30px;
     padding: 7px;
     height: auto;
     color: white;
@@ -107,7 +136,7 @@ main{
     /* https://stackoverflow.com/questions/5263260/stop-safari-mobile-from-giving-input-buttons-rounded-corners */
 }
 .startGame:hover{
-    background: rgba(255,255,255,0.4);
+    background: darkred;
 }
 .right{
     min-width: 400px;
@@ -125,10 +154,10 @@ main{
     text-align: center;
     font-size: 50px;
     font-family: 'Exo', sans-serif;
-    color: white;
+    color: red;
 }
 .head{
-    border: 8px solid white;
+    border: 8px solid red;
     border-radius: 50%;
     grid-column: 2;
     grid-row: 1;
@@ -142,7 +171,7 @@ main{
 }
 
 .chest{
-    border-top: 8px solid white;
+    border-top: 8px solid red;
     grid-column: 2;
     grid-row: 2;
     opacity: 0;
@@ -156,7 +185,7 @@ main{
 .waist{
     grid-column: 2;
     grid-row: 3;
-    border-bottom: 8px solid white;
+    border-bottom: 8px solid red;
     opacity: 0;
 }
 .leftleg{
@@ -183,14 +212,14 @@ main{
 
 .letter{
     text-align: center;
-    margin: 3px;
-    background: rgba(0,0,0,0.4);
+    margin: 2px;
+    background: red;
     color: white;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 48px;
     font-size: 40px;
-    line-height: 40px;
-    padding-bottom: 4px;
+    line-height: 45px;
+    padding: 1px;
     border: 2px solid white;
     user-select: none;
 }
@@ -198,10 +227,16 @@ main{
 .winloss{
     font-size: 70px;
     padding: 8px;
-    background: white;
+    background: red;
     display: none;
 }
+.won{
+    color: white;
+}
 
+.lost{
+    color: white;
+}
 @media only screen and (max-width: 700px) {
     .right{
         order: 1;

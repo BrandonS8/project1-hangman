@@ -7,7 +7,8 @@ let chars = []
 const man = document.querySelector('.man').children
 // alphabet array
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-
+// theme array 
+themeArray = ['supreme.css', 'light.css', 'greyscale.css']
 // variable to hold answer
 let theAnswer = ''
 let theAnswerArray = []
@@ -18,6 +19,9 @@ let wrongLetters = 0
 // right counter
 let rightLetters = 0
 let winNumber = 0
+//current player
+currentPlayer = 'player1'
+
 // generate array of letters and add click events to them
 function createLetters () {
   alphabet.forEach(function (letter) {
@@ -27,6 +31,44 @@ function createLetters () {
       div.addEventListener('click', pressedLetter)
       letterHolder.appendChild(div)
     })
+}
+
+//currentplayer
+sessionStorage.setItem('lastPlayer', currentPlayer)
+
+if(sessionStorage.getItem('lastPlayer')!= undefined){
+    currentPlayer = sessionStorage.getItem('lastPlayer')
+}
+console.log(currentPlayer)
+
+function changeLastPlayer(){
+    let lastPlayer = sessionStorage.getItem('lastPlayer')
+if (lastPlayer = 'player2'){
+    currentPlayer = 'player1'
+} else if(lastPlayer = 'player1'){
+    currentPlayer = 'player2'
+}
+console.log(currentPlayer)
+}
+//theme changer
+
+let currentTheme = 1
+if(sessionStorage.getItem('savedTheme')){
+     currentTheme = sessionStorage.getItem('savedTheme')
+} else {
+    currentTheme = 1
+}
+document.querySelector('#theme').setAttribute('href', themeArray[currentTheme]) 
+document.querySelector('.themeButton').addEventListener('click', changeTheme)
+function changeTheme(){
+    if(currentTheme < (themeArray.length - 1)){
+        currentTheme++
+        sessionStorage.setItem('savedTheme', currentTheme)
+    } else{
+        currentTheme= 0
+        sessionStorage.setItem('savedTheme', currentTheme)
+    }
+    document.querySelector('#theme').setAttribute('href', themeArray[currentTheme])
 }
 
 // start game by hiding answer
@@ -46,6 +88,8 @@ function start () {
   } else {
     alert('Please enter a word')
   }
+
+  changeLastPlayer()
 }
 
 function setWords () {
@@ -67,7 +111,7 @@ function pressedLetter () {
       i++
       rightLetters++
       checkWin()
-      letter.style.color = 'white'
+      letter.classList.add('unhiddenAnswer')
       letter.style.borderBottom = 'none'
       pressed.style.color = 'green'
       wrongCount = 0
@@ -102,7 +146,6 @@ function hideAnswer (callback) {
       let div = document.createElement('div')
       div.textContent = letter
       div.classList.add('hiddenAnswer')
-      div.addEventListener('click', showAnswerLetter)
       word[currentWord].appendChild(div)
       winNumber++
     } else if (letter === ' ') {
@@ -110,8 +153,7 @@ function hideAnswer (callback) {
     } else {
       let div = document.createElement('div')
       div.textContent = letter
-      div.classList.add('hiddenAnswer')
-      div.style.color = 'white'
+      div.classList.add('unhiddenAnswer')
       div.style.borderBottom = 'none'
       word[currentWord].appendChild(div)
     }
@@ -124,7 +166,8 @@ function setChars () {
 }
 
 function showAnswerLetter () {
-  this.style.color = 'white'
+  this.classList.add('unhiddenAnswer')
+  this.classList.remove('hiddenAnswer')
   this.style.borderBottom = 'none'
 }
 
@@ -151,11 +194,11 @@ function winLose(value){
     document.querySelector('.right').style.display = 'none'
     document.querySelector('.winloss').style.display = 'inline'
     if (value === 'win'){
-        document.querySelector('.winloss').style.color = 'green'
+        document.querySelector('.winloss').classList.add('won')
         document.querySelector('.winloss').textContent = `YOU WIN!` 
         showAnswer()
     } else if (value === 'lose'){
-        document.querySelector('.winloss').style.color = 'red'
+        document.querySelector('.winloss').classList.add('lost')
         document.querySelector('.winloss').textContent = `YOU LOSE!` 
         showAnswer()
     }
@@ -164,8 +207,18 @@ function winLose(value){
 function showAnswer(){
     document.querySelectorAll('.hiddenAnswer').forEach(function(ans){
         ans.classList.add('unhiddenAnswer')
+        ans.classList.remove('hiddenAnswer')
     })
 }
+
+sessionStorage.setItem(`${currentPlayer}Score`, 4)
+
+//scores
+var player1Score = sessionStorage.getItem(`${currentPlayer}Score`)
+console.log(sessionStorage.getItem(`${currentPlayer}Score`))
+var player2Score = sessionStorage.getItem('player2Score')
+
+
 //   https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
 // https://stackoverflow.com/questions/13946651/matching-special-characters-and-letters-in-regex
 // note to self: look more into regexp is may be more useful https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
@@ -174,3 +227,6 @@ function showAnswer(){
 // like an object for the answer stuff
 // object for the letters
 // object for the hangman
+//add changing background for translucent theme
+
+//need to fix sessionStorage scoring 

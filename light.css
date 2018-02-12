@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:900');
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
+/* ^ I don't think I've ever used @import in my life 'til now, but google fonts suggested it */
+
+html{
+    background:url("img/skyline1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    margin: 0;
+    min-height: 100%;
+}
+
+
+.themeButton{
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+    border-radius: none;
+    background: rgba(0,0,0,0.6);
+    text-align: center;
+    font-size: 10px;
+    line-height: 10px;
+    padding: 7px;
+    height: auto;
+    color: white;
+    -webkit-appearance:none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 0 5px 5px;
+}
+
+header{
+    text-align: center;
+    margin-top: 25px;
+}
+header h1{
+    font-size: 80px;
+    padding: 0;
+    margin: 0px;
+    color: white;
+}
+main{
+    display: flex;
+    flex-direction: column;
+}
+.middle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.answer{
+    min-width: 300px;
+    height: 300px;
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.answerHeading{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.hiddenAnswerWord{
+    text-align: center;
+    display: block;
+    color: rgba(0,0,0,0);
+    padding: 0 10px;
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+}
+.hiddenAnswer{
+    color: rgba(0,0,0,0);
+    margin: 0 2px;
+    border-bottom: 2px solid white;
+    font-size: 55px;
+    height: 55px;
+    width: 40px;
+}
+.unhiddenAnswer{
+    color: white;
+    margin: 0;
+    border-bottom: none;
+    font-size: 55px;
+    height: 55px;
+    width: auto;
+}
+.wordBox{
+    background: rgba(0,0,0,0.4);
+    padding: 4px;
+    border: none;
+    font-size: 30px;
+    line-height: 30px;
+    color: white;
+    text-align: center;
+    
+}
+.wordBox::placeholder{
+    color: white;
+    opacity: 0.5;
+}
+.wordBox:hover{
+    background: rgba(0,0,0,0.6);
+}
+.startGame{
+    border: none;
+    border-radius: none;
+    background: rgba(0,0,0,0.6);
+    text-align: center;
+    font-size: 30px;
+    line-height: 29px;
+    padding: 7px;
+    height: auto;
+    color: white;
+    -webkit-appearance:none;
+    /* https://stackoverflow.com/questions/5263260/stop-safari-mobile-from-giving-input-buttons-rounded-corners */
+}
+.startGame:hover{
+    background: rgba(255,255,255,0.4);
+}
+.right{
+    min-width: 400px;
+    height: 500px;
+    flex: 1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+.man{
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Exo', sans-serif;
+    color: white;
+}
+.head{
+    border: 8px solid white;
+    border-radius: 50%;
+    grid-column: 2;
+    grid-row: 1;
+    opacity: 0;
+}
+.leftarm{
+    text-align: right;
+    grid-column: 1;
+    grid-row: 2;
+    opacity: 0;
+}
+
+.chest{
+    border-top: 8px solid white;
+    grid-column: 2;
+    grid-row: 2;
+    opacity: 0;
+}
+.rightarm{
+    text-align: left;
+    grid-column: 3;
+    grid-row: 2;
+    opacity: 0;
+}
+.waist{
+    grid-column: 2;
+    grid-row: 3;
+    border-bottom: 8px solid white;
+    opacity: 0;
+}
+.leftleg{
+    text-align: right;
+    grid-column: 1;
+    grid-row: 4;
+    opacity: 0;
+}
+.rightleg{
+    text-align: left;
+    grid-column: 3;
+    grid-row: 4;
+    opacity: 0;
+}
+
+.letters{
+    min-width: 400px;
+    min-height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter{
+    text-align: center;
+    margin: 3px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    line-height: 40px;
+    padding-bottom: 4px;
+    border: 2px solid white;
+    user-select: none;
+}
+
+.winloss{
+    font-size: 70px;
+    padding: 8px;
+    background: white;
+    display: none;
+}
+
+.won{
+    color: green;
+}
+
+.lost{
+    color: red;
+}
+.scores{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.clearScores{
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+    border-radius: none;
+    background: rgba(0,0,0,0.6);
+    text-align: center;
+    font-size: 10px;
+    line-height: 10px;
+    padding: 7px;
+    height: auto;
+    color: white;
+    -webkit-appearance:none;
+    margin: 5px;
+}
+
+
+
+@media only screen and (max-width: 700px) {
+    .right{
+        order: 1;
+        height: 300px;
+    }
+    .answer{
+        order: 2;
+        height: auto;
+        padding: 15px 0;
+    }
+}

@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman</title>
     <link href='reset.css' rel='stylesheet'>
-    <link href='style.css' rel='stylesheet'>
+    <link id = 'theme' href='supreme.css' rel='stylesheet'>
 </head>
 <body>
     <div class="content">
+    <button class ='themeButton'>Change Theme</button>
     <header>
         <h1>Hangman</h1>
     </header>
@@ -35,6 +36,12 @@
         </div>
         <div class='letters'></div>
     </main>
+    <div class='scores'>
+            <h1 class='turnTeller'>Player 1's Turn</h1>
+            <h1 class='player1score'>Player 1: 0</h1>
+            <h1 class='player2score'>Player 2: 0</h1>
+            <button class='clearScores'>Clear Scores</button>
+    </div>
 </div>
 <script src='main.js'></script>
 </body>
