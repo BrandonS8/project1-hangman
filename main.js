@@ -35,6 +35,7 @@ startGameButton.addEventListener('click', start)
 function start () {
   createLetters()
   if (wordBox.value !== '') {
+    document.querySelector('.right').style.display = 'flex'
     theAnswer = wordBox.value.toUpperCase()
     theAnswerArrayWords = wordBox.value.toUpperCase().split(' ')
     theAnswerArray = wordBox.value.toUpperCase().split('')
@@ -81,9 +82,7 @@ function wrongAnswer (pressed) {
   if (wrongCount === chars.length) {
     wrongLetters += 1
     pressed.style.color = 'red'
-    console.log('Wrong!' + wrongLetters)
     wrongCount = 0
-    // addToMan()
     makeMan(wrongLetters - 1)
     checkLoss()
   }
@@ -115,7 +114,6 @@ function hideAnswer (callback) {
       div.style.color = 'white'
       div.style.borderBottom = 'none'
       word[currentWord].appendChild(div)
-      console.log(letter)
     }
   })
   callback()
@@ -123,7 +121,6 @@ function hideAnswer (callback) {
 
 function setChars () {
   chars = document.querySelectorAll('.hiddenAnswer')
-  console.log(chars)
 }
 
 function showAnswerLetter () {
@@ -134,17 +131,41 @@ function showAnswerLetter () {
 function checkWin () {
   if (rightLetters >= winNumber) {
     console.log('winner!')
+    winLose('win')
   }
 }
 function checkLoss(){
     if(wrongLetters >= 7){
         console.log('You lost')
+        winLose('lose')
     }
 }
 
 function makeMan(value){
   man[value].style.opacity = 1
+}
 
+function winLose(value){
+    if (value === 'win'){
+        document.querySelector('.right').style.display = 'none'
+        document.querySelector('.answer').style.flexDirection = 'column'
+        document.querySelector('.winloss').style.display = 'inline'
+        document.querySelector('.winloss').style.color = 'green'
+        document.querySelector('.winloss').textContent = `YOU WIN!` 
+    } else if (value === 'lose'){
+        document.querySelector('.right').style.display = 'none'
+        document.querySelector('.answer').style.flexDirection = 'column'
+        document.querySelector('.winloss').style.display = 'inline'
+        document.querySelector('.winloss').style.color = 'red'
+        document.querySelector('.winloss').textContent = `YOU LOSE!` 
+        showAnswer()
+    }
+}
+
+function showAnswer(){
+    document.querySelectorAll('.hiddenAnswer').forEach(function(ans){
+        ans.classList.add('unhiddenAnswer')
+    })
 }
 //   https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
 // https://stackoverflow.com/questions/13946651/matching-special-characters-and-letters-in-regex

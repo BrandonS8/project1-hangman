@@ -68,7 +68,13 @@ main{
     height: 55px;
     width: 40px;
 }
-
+.unhiddenAnswer{
+    color: white;
+    margin: 0;
+    border-bottom: none;
+    font-size: 55px;
+    height: 55px;
+}
 .wordBox{
     background: rgba(0,0,0,0.4);
     padding: 4px;
@@ -104,7 +110,7 @@ main{
     min-width: 400px;
     height: 500px;
     flex: 1;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex: 1;
@@ -184,6 +190,13 @@ main{
     padding-bottom: 4px;
     border: 2px solid white;
     user-select: none;
+}
+
+.winloss{
+    font-size: 60px;
+    color: green;
+    background: white;
+    display: none;
 }
 
 @media only screen and (max-width: 700px) {
