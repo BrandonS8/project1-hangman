@@ -7,7 +7,7 @@ let chars = []
 const man = document.querySelector('.man').children
 // alphabet array
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-// theme array 
+// theme array
 themeArray = ['supreme.css', 'light.css', 'greyscale.css']
 // variable to hold answer
 let theAnswer = ''
@@ -19,56 +19,104 @@ let wrongLetters = 0
 // right counter
 let rightLetters = 0
 let winNumber = 0
-//current player
-currentPlayer = 'player1'
+let score = 0
+// current player
+let currentPlayer = 'player1'
 
 // generate array of letters and add click events to them
 function createLetters () {
   alphabet.forEach(function (letter) {
-      let div = document.createElement('div')
-      div.textContent = letter
-      div.classList.add('letter')
-      div.addEventListener('click', pressedLetter)
-      letterHolder.appendChild(div)
-    })
+    let div = document.createElement('div')
+    div.textContent = letter
+    div.classList.add('letter')
+    div.addEventListener('click', pressedLetter)
+    letterHolder.appendChild(div)
+  })
 }
 
-//currentplayer
-sessionStorage.setItem('lastPlayer', currentPlayer)
+console.log(sessionStorage.getItem('loadedBefore'))
 
-if(sessionStorage.getItem('lastPlayer')!= undefined){
-    currentPlayer = sessionStorage.getItem('lastPlayer')
+if (sessionStorage.getItem('loadedBefore') === null) {
+  currentPlayer = 'player1'
+  score = 0
+  sessionStorage.setItem('player1score', 0)
+  sessionStorage.setItem('player2score', 0)
+  sessionStorage.setItem('loadedBefore', true)
+  sessionStorage.setItem('lastPlayer', 'player1')
+} else {
+  score = sessionStorage.getItem(`${currentPlayer}score`)
+  console.log(score)
+  changeLastPlayer()
+  updateScore()
+}
+console.log(sessionStorage.getItem(`${currentPlayer}score`))
+console.log(sessionStorage.getItem('loadedBefore'))
+console.log(sessionStorage.getItem('lastPlayer'))
+
+
+// scores
+function updateScore () {
+    console.log(score)
+  if (currentPlayer === 'player1') {
+      sessionStorage.setItem('player1score', score)
+      document.querySelector('.player1score').innerHTML = `Player 1: ${score}`
+    } else {
+      sessionStorage.setItem('player2score', score)
+    }
+
+    savedScore1 =   sessionStorage.getItem('player1score')
+    savedScore2= sessionStorage.getItem('player2score')
+    document.querySelector('.player1score').innerHTML = `Player 1: ${savedScore1}`
+    document.querySelector('.player2score').innerHTML = `Player 2: ${savedScore2}`
+}
+
+document.querySelector('.clearScores').addEventListener('click', function () {
+    score = 0
+    sessionStorage.setItem('player1score', 0)
+    sessionStorage.setItem('player2score', 0)
+    updateScore()
+})
+// currentplayer
+
+function changeLastPlayer () {
+  let lastPlayer = sessionStorage.getItem('lastPlayer')
+  if (lastPlayer === 'player2') {
+  currentPlayer = 'player1'
+  sessionStorage.setItem('lastPlayer', 'player1')
+} else if (lastPlayer === 'player1') {
+  currentPlayer = 'player2'
+  sessionStorage.setItem('lastPlayer', 'player2')
+}
+  updatePlayer()
 }
 console.log(currentPlayer)
+function updatePlayer () {
+  if (currentPlayer === 'player1') {
+      document.querySelector('.turnTeller').innerHTML = `Player 1's Guess`
+    } else {
+      document.querySelector('.turnTeller').innerHTML = `Player 2's Guess`
+    }
+}
 
-function changeLastPlayer(){
-    let lastPlayer = sessionStorage.getItem('lastPlayer')
-if (lastPlayer = 'player2'){
-    currentPlayer = 'player1'
-} else if(lastPlayer = 'player1'){
-    currentPlayer = 'player2'
-}
-console.log(currentPlayer)
-}
-//theme changer
+// theme changer
 
 let currentTheme = 1
-if(sessionStorage.getItem('savedTheme')){
-     currentTheme = sessionStorage.getItem('savedTheme')
+if (sessionStorage.getItem('savedTheme')) {
+  currentTheme = sessionStorage.getItem('savedTheme')
 } else {
-    currentTheme = 1
+  currentTheme = 1
 }
-document.querySelector('#theme').setAttribute('href', themeArray[currentTheme]) 
+document.querySelector('#theme').setAttribute('href', themeArray[currentTheme])
 document.querySelector('.themeButton').addEventListener('click', changeTheme)
-function changeTheme(){
-    if(currentTheme < (themeArray.length - 1)){
-        currentTheme++
-        sessionStorage.setItem('savedTheme', currentTheme)
-    } else{
-        currentTheme= 0
-        sessionStorage.setItem('savedTheme', currentTheme)
+function changeTheme () {
+  if (currentTheme < (themeArray.length - 1)) {
+      currentTheme++
+      sessionStorage.setItem('savedTheme', currentTheme)
+    } else {
+      currentTheme = 0
+      sessionStorage.setItem('savedTheme', currentTheme)
     }
-    document.querySelector('#theme').setAttribute('href', themeArray[currentTheme])
+  document.querySelector('#theme').setAttribute('href', themeArray[currentTheme])
 }
 
 // start game by hiding answer
@@ -88,16 +136,14 @@ function start () {
   } else {
     alert('Please enter a word')
   }
-
-  changeLastPlayer()
 }
 
 function setWords () {
   theAnswerArrayWords.forEach(function (word) {
-      let div = document.createElement('div')
-      div.classList.add('hiddenAnswerWord')
-      answerHolder.appendChild(div)
-    })
+    let div = document.createElement('div')
+    div.classList.add('hiddenAnswerWord')
+    answerHolder.appendChild(div)
+  })
 }
 
 let wrongCount = 0
@@ -177,49 +223,43 @@ function checkWin () {
     winLose('win')
   }
 }
-function checkLoss(){
-    if(wrongLetters >= 7){
-        console.log('You lost')
-        winLose('lose')
+function checkLoss () {
+  if (wrongLetters >= 7) {
+      console.log('You lost')
+      winLose('lose')
     }
 }
 
-function makeMan(value){
+function makeMan (value) {
   man[value].style.opacity = 1
 }
 
-function winLose(value){
-    letterHolder.style.display = 'none'
-    document.querySelector('.answer').style.flexDirection = 'column'
-    document.querySelector('.right').style.display = 'none'
-    document.querySelector('.winloss').style.display = 'inline'
-    if (value === 'win'){
-        document.querySelector('.winloss').classList.add('won')
-        document.querySelector('.winloss').textContent = `YOU WIN!` 
-        showAnswer()
-    } else if (value === 'lose'){
-        document.querySelector('.winloss').classList.add('lost')
-        document.querySelector('.winloss').textContent = `YOU LOSE!` 
-        showAnswer()
+function winLose (value) {
+  letterHolder.style.display = 'none'
+  document.querySelector('.answer').style.flexDirection = 'column'
+  document.querySelector('.right').style.display = 'none'
+  document.querySelector('.winloss').style.display = 'inline'
+  if (value === 'win') {
+      score++
+      document.querySelector('.winloss').classList.add('won')
+      document.querySelector('.winloss').textContent = `YOU WIN!`
+      showAnswer()
+      updateScore()
+    } else if (value === 'lose') {
+      document.querySelector('.winloss').classList.add('lost')
+      document.querySelector('.winloss').textContent = `YOU LOSE!`
+      showAnswer()
     }
 }
 
-function showAnswer(){
-    document.querySelectorAll('.hiddenAnswer').forEach(function(ans){
-        ans.classList.add('unhiddenAnswer')
-        ans.classList.remove('hiddenAnswer')
+function showAnswer () {
+  document.querySelectorAll('.hiddenAnswer').forEach(function (ans) {
+      ans.classList.add('unhiddenAnswer')
+      ans.classList.remove('hiddenAnswer')
     })
 }
 
-sessionStorage.setItem(`${currentPlayer}Score`, 4)
-
-//scores
-var player1Score = sessionStorage.getItem(`${currentPlayer}Score`)
-console.log(sessionStorage.getItem(`${currentPlayer}Score`))
-var player2Score = sessionStorage.getItem('player2Score')
-
-
-//   https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
+// https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
 // https://stackoverflow.com/questions/13946651/matching-special-characters-and-letters-in-regex
 // note to self: look more into regexp is may be more useful https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
@@ -227,6 +267,9 @@ var player2Score = sessionStorage.getItem('player2Score')
 // like an object for the answer stuff
 // object for the letters
 // object for the hangman
-//add changing background for translucent theme
+// add changing background for translucent theme
 
-//need to fix sessionStorage scoring 
+// need to fix sessionStorage scoring
+// add css that was added for long words in the light.css to the other two
+
+// stop letters from showing up when game doesnt actually start
