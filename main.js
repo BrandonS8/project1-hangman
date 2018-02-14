@@ -34,15 +34,12 @@ if (sessionStorage.getItem('loadedBefore') === null) {
   sessionStorage.setItem('lastPlayer', 'player1')
   updatePlayer()
 } else {
-  console.log(currentPlayer)
   changeLastPlayer()
   updatePlayer()
   updateScore()
 }
 // scoring
 function updateScore () {
-  console.log(score)
-  console.log(currentPlayer)
   if (currentPlayer === 'player1') {
     sessionStorage.setItem('player1score', score)
     document.querySelector('.player1score').innerHTML = `Player 1: ${score}`
@@ -79,7 +76,7 @@ function changeLastPlayer () {
   score = sessionStorage.getItem(`${currentPlayer}score`)
   updatePlayer()
 }
-console.log(currentPlayer)
+
 function updatePlayer () {
   if (currentPlayer === 'player1') {
     document.querySelector('.turnTeller').innerHTML = `Player 1's Guess`
@@ -244,13 +241,11 @@ function showAnswerLetter () {
 
 function checkWin () {
   if (rightLetters >= winNumber) {
-    console.log('winner!')
     winLose('win')
   }
 }
 function checkLoss () {
   if (wrongLetters >= 7) {
-    console.log('You lost')
     winLose('lose')
   }
 }
