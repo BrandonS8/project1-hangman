@@ -194,6 +194,20 @@ main{
     border: none;
     border-radius: none;
 }
+.replay{
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 15px;
+    background: rgba(0,0,0,0.7);
+    width: 100%;
+    margin: 3px 30%;
+    -webkit-appearance:none;
+    border: none;
+    border-radius: none;
+}
 .right{
     min-width: 400px;
     height: 400px;

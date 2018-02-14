@@ -124,6 +124,10 @@ document.querySelector('.showDirections').addEventListener('click', function () 
         b.innerHTML = 'View Directions'
     }
 })
+//next round
+document.querySelector('.replay').addEventListener('click', function(){
+    location.reload()
+})
 
 // generate array of letters and add click events to them when start calls it
 function createLetters () {
@@ -159,6 +163,7 @@ function start () {
     wordBox.style.display = 'none'
     startGameButton.style.display = 'none'
     document.querySelector('.showDirections').style.display = 'none'
+    document.querySelector('.replay').style.display = 'none'
   } else {
     alert('Please enter a word')
   }
@@ -260,6 +265,7 @@ function winLose (value) {
   document.querySelector('.answer').style.flexDirection = 'column'
   document.querySelector('.right').style.display = 'none'
   document.querySelector('.winloss').style.display = 'inline'
+  document.querySelector('.replay').style.display = 'initial'
   if (value === 'win') {
     score++
     document.querySelector('.winloss').classList.add('won')
@@ -279,7 +285,7 @@ function showAnswer () {
     ans.classList.remove('hiddenAnswer')
   })
 }
-
+// https://www.w3schools.com/jsref/met_loc_reload.asp
 // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
 // https://stackoverflow.com/questions/13946651/matching-special-characters-and-letters-in-regex
 // note to self: look more into regexp is may be more useful https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions

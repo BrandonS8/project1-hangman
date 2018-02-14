@@ -145,7 +145,21 @@ main{
     font-size: 15px;
     background: rgba(0,0,0,0.7);
     width: 100%;
-    margin: 3px 30%;
+    margin: 3px 40%;
+    -webkit-appearance:none;
+    border: 1px solid #555555;
+    border-radius: none;
+}
+.replay{
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 15px;
+    background: rgba(0,0,0,0.7);
+    width: 100px;
+    margin: 3px 20px;
     -webkit-appearance:none;
     border: 1px solid #555555;
     border-radius: none;
