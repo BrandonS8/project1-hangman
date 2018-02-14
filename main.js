@@ -43,10 +43,11 @@ if (sessionStorage.getItem('loadedBefore') === null) {
   sessionStorage.setItem('player2score', 0)
   sessionStorage.setItem('loadedBefore', true)
   sessionStorage.setItem('lastPlayer', 'player1')
+  updatePlayer()
 } else {
-  score = sessionStorage.getItem(`${currentPlayer}score`)
-  console.log(score)
+  console.log(currentPlayer)
   changeLastPlayer()
+  updatePlayer()
   updateScore()
 }
 console.log(sessionStorage.getItem(`${currentPlayer}score`))
@@ -57,6 +58,7 @@ console.log(sessionStorage.getItem('lastPlayer'))
 // scores
 function updateScore () {
     console.log(score)
+    console.log(currentPlayer)
   if (currentPlayer === 'player1') {
       sessionStorage.setItem('player1score', score)
       document.querySelector('.player1score').innerHTML = `Player 1: ${score}`
@@ -64,8 +66,8 @@ function updateScore () {
       sessionStorage.setItem('player2score', score)
     }
 
-    savedScore1 =   sessionStorage.getItem('player1score')
-    savedScore2= sessionStorage.getItem('player2score')
+   let savedScore1 =   sessionStorage.getItem('player1score')
+   let savedScore2 = sessionStorage.getItem('player2score')
     document.querySelector('.player1score').innerHTML = `Player 1: ${savedScore1}`
     document.querySelector('.player2score').innerHTML = `Player 2: ${savedScore2}`
 }
@@ -74,6 +76,9 @@ document.querySelector('.clearScores').addEventListener('click', function () {
     score = 0
     sessionStorage.setItem('player1score', 0)
     sessionStorage.setItem('player2score', 0)
+    sessionStorage.setItem('lastPlayer', 'player2')
+    sessionStorage.removeItem('loadedBefore')
+    changeLastPlayer()
     updateScore()
 })
 // currentplayer
@@ -87,6 +92,7 @@ function changeLastPlayer () {
   currentPlayer = 'player2'
   sessionStorage.setItem('lastPlayer', 'player2')
 }
+score = sessionStorage.getItem(`${currentPlayer}score`)
   updatePlayer()
 }
 console.log(currentPlayer)
@@ -123,7 +129,6 @@ function changeTheme () {
 startGameButton.addEventListener('click', start)
 
 function start () {
-  createLetters()
   if (wordBox.value !== '') {
     document.querySelector('.right').style.display = 'flex'
     theAnswer = wordBox.value.toUpperCase()
@@ -131,6 +136,7 @@ function start () {
     theAnswerArray = wordBox.value.toUpperCase().split('')
     setWords()
     hideAnswer(setChars)
+    createLetters()
     wordBox.style.display = 'none'
     startGameButton.style.display = 'none'
   } else {
@@ -269,7 +275,8 @@ function showAnswer () {
 // object for the hangman
 // add changing background for translucent theme
 
-// need to fix sessionStorage scoring
 // add css that was added for long words in the light.css to the other two
 
 // stop letters from showing up when game doesnt actually start
+
+//css still needs fixed for smaller screens

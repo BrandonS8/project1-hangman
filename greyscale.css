@@ -72,9 +72,10 @@ main{
     display: block;
     color: rgba(0,0,0,0);
     padding: 0 10px;
-    font-size: 55px;
+    font-size: 40px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .hiddenAnswer{
     color: rgba(0,0,0,0);
@@ -230,6 +231,34 @@ main{
 
 .lost{
     color: black;
+}
+
+.scores{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.clearScores{
+    font-family: 'Open Sans', sans-serif;
+    border: 2px solid #555555;
+    border-radius: none;
+    background: rgba(0,0,0,0.6);
+    text-align: center;
+    font-size: 10px;
+    line-height: 10px;
+    padding: 7px;
+    height: auto;
+    color: white;
+    -webkit-appearance:none;
+    margin: 5px;
 }
 
 @media only screen and (max-width: 700px) {
