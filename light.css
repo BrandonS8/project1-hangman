@@ -202,8 +202,8 @@ main{
     color: white;
     font-size: 15px;
     background: rgba(0,0,0,0.7);
-    width: 100%;
-    margin: 3px 30%;
+    width: 100px;
+    margin: 3px 20px;
     -webkit-appearance:none;
     border: none;
     border-radius: none;

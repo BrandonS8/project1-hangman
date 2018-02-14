@@ -180,8 +180,8 @@ main{
     color: white;
     font-size: 15px;
     background: red;
-    width: 100%;
-    margin: 3px 30%;
+    width: 100px;
+    margin: 3px 20px;
     -webkit-appearance:none;
     border: none;
     border-radius: none;
@@ -333,5 +333,13 @@ main{
     }
     header h1{
         font-size: 40px;
+    }
+    .unhiddenAnswer{
+        color: white;
+        margin: 6px 2px;
+        border-bottom: none;
+        font-size: 45px;
+        height: 45px;
+        width: 30px;
     }
 }
