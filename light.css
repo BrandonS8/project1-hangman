@@ -3,7 +3,7 @@
 /* ^ I don't think I've ever used @import in my life 'til now, but google fonts suggested it */
 
 html{
-    background:url("img/skyline1.jpg");
+    background:url("img/skyline2fixed.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -33,10 +33,10 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
     align-self: flex-end;
-    padding: 20px;
+    padding: 10px;
 }
 
 .clearScores{
@@ -74,7 +74,6 @@ body{
 
 header{
     text-align: center;
-    margin-top: 25px;
 }
 header h1{
     font-size: 80px;
@@ -118,6 +117,7 @@ main{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    background: rgba(0,0,0,0.7);
 }
 .hiddenAnswer{
     color: rgba(0,0,0,0);
@@ -147,7 +147,7 @@ main{
 }
 .wordBox::placeholder{
     color: white;
-    opacity: 0.5;
+    opacity: 0.7;
 }
 .wordBox:hover{
     background: rgba(0,0,0,0.6);
@@ -168,9 +168,35 @@ main{
 .startGame:hover{
     background: rgba(255,255,255,0.4);
 }
+.dirShow{
+    display: block;
+}
+.directions{
+    display: none;
+    text-align: center;
+    width: 100%;
+    line-height: 23px;
+    color: white;
+    font-size: 18px;
+    background: rgba(0,0,0,0.6);
+    margin: 4px 20%;
+}
+.showDirections{
+    margin-top: 20px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 15px;
+    background: rgba(0,0,0,0.7);
+    width: 100%;
+    margin: 3px 30%;
+    -webkit-appearance:none;
+    border: none;
+    border-radius: none;
+}
 .right{
     min-width: 400px;
-    height: 500px;
+    height: 400px;
     flex: 1;
     display: none;
     justify-content: center;
@@ -233,7 +259,7 @@ main{
 
 .letters{
     min-width: 300px;
-    min-height: 60px;
+    min-height: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

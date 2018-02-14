@@ -34,7 +34,7 @@ header{
     margin-top: 25px;
 }
 header h1{
-    font-size: 80px;
+    font-size: 50px;
     padding: 0;
     margin: 0px;
     color:#555555;
@@ -51,7 +51,7 @@ main{
 }
 .answer{
     min-width: 300px;
-    height: 500px;
+    height: 400px;
     flex: 2;
     display: flex;
     flex-wrap: wrap;
@@ -126,9 +126,33 @@ main{
 .startGame:hover{
     background: rgba(255,255,255,0.4);
 }
+
+.directions{
+    display: none;
+    text-align: center;
+    width: 100%;
+    line-height: 23px;
+    color: white;
+    font-size: 18px;
+    background: rgba(0,0,0,0.6);
+    margin: 4px 20%;
+}
+.showDirections{
+    margin-top: 20px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 15px;
+    background: rgba(0,0,0,0.7);
+    width: 100%;
+    margin: 3px 30%;
+    -webkit-appearance:none;
+    border: 1px solid #555555;
+    border-radius: none;
+}
 .right{
     min-width: 400px;
-    height: 500px;
+    height: 400px;
     flex: 1;
     display: none;
     justify-content: center;
@@ -191,7 +215,7 @@ main{
 
 .letters{
     min-width: 300px;
-    min-height: 60px;
+    min-height: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -239,10 +263,10 @@ main{
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
     align-self: flex-end;
-    padding: 20px;
+    padding: 10px;
 }
 
 .clearScores{
