@@ -275,8 +275,5 @@ function showAnswer () {
 // object for the hangman
 // add changing background for translucent theme
 
-// add css that was added for long words in the light.css to the other two
-
-// stop letters from showing up when game doesnt actually start
 
 //css still needs fixed for smaller screens

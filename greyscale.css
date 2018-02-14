@@ -190,12 +190,13 @@ main{
 }
 
 .letters{
-    min-width: 400px;
+    min-width: 300px;
     min-height: 60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin: 10px;
 }
 
 .letter{
@@ -212,7 +213,7 @@ main{
     user-select: none;
 }
 .wrong{
-
+    color: red;
 }
 .right{
     color: green;
@@ -240,15 +241,12 @@ main{
     align-items: flex-end;
     font-size: 30px;
     color: white;
-    margin: 10px;
-    position: absolute;
-    top: 0;
-    right: 0;
+    align-self: flex-end;
+    padding: 20px;
 }
 
 .clearScores{
-    font-family: 'Open Sans', sans-serif;
-    border: 2px solid #555555;
+    border: 1px solid #555555;
     border-radius: none;
     background: rgba(0,0,0,0.6);
     text-align: center;
@@ -261,6 +259,9 @@ main{
     margin: 5px;
 }
 
+
+
+
 @media only screen and (max-width: 700px) {
     .right{
         order: 1;
@@ -271,4 +272,10 @@ main{
         height: auto;
         padding: 15px 0;
     }
+    .scores{
+        align-self: center;
+        align-items: center;
+        padding-top: 30px;
+    }
 }
+
