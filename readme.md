@@ -51,6 +51,7 @@ This is how it works starting from the user typing in a word or phrase:
     * If the user guesses all of them right before building the hater they win and 1 is added to their score
 
 This is the method I used to hide the letters and put them in to the words, simplified.
+
    ```js 
    let word = document.querySelectorAll('.hiddenAnswerWord')
   let normal = /[a-zA-Z]/
@@ -64,6 +65,7 @@ This is the method I used to hide the letters and put them in to the words, simp
     //create the div but don't hide the character
     }
    ```
+   A lof of people were not aware of RegExp, which is this part ```/[a-zA-Z]/```. I wasn't aware of this either until after some searching. You can learn more about it here](https://www.w3schools.com/jsref/jsref_obj_regexp.asp) 
 
 ## Future Ideas
 If I come back to this in the future or had more time these are some things I would add or do.
@@ -73,4 +75,6 @@ If I come back to this in the future or had more time these are some things I wo
 * Better graphics for the hater, maybe more than a stickman
 * Foreign language support, the current letters are only the English alphabet
 * I think it would be fun to add a dunk tank clown style to the hater, so as it is being made it 'speaks' to the user, such as a quote saying 'I can't wait to show twitter your score' when the player is near losing
+* Using keyboard to guess letters.
+* Possibly stop putting the letters in to divs and instead display an array converted to a string
  
