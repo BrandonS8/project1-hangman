@@ -8,7 +8,7 @@ const man = document.querySelector('.man').children
 // alphabet array for the letter creator
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 // theme array
-themeArray = ['supreme.css', 'light.css', 'greyscale.css']
+themeArray = ['css/supreme.css', 'css/light.css', 'css/greyscale.css']
 // variable to hold answer
 let theAnswer = ''
 let theAnswerArray = []
