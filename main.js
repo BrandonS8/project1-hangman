@@ -1,4 +1,4 @@
-//VARIABLES
+// VARIABLES
 // variables for elements
 const wordBox = document.querySelector('.wordBox')
 const startGameButton = document.querySelector('.startGame')
@@ -106,25 +106,25 @@ function changeTheme () {
   document.querySelector('#theme').setAttribute('href', themeArray[currentTheme])
 }
 // show directions
-document.querySelector('.directions').style.display = 'none' //the click if statement doesnt work the first click without this 
+document.querySelector('.directions').style.display = 'none' // the click if statement doesnt work the first click without this
 document.querySelector('.showDirections').addEventListener('click', function () {
   let d = document.querySelector('.directions')
   let b = document.querySelector('.showDirections')
-    if(d.style.display === 'none'){
-        d.style.display = 'initial'
-        wordBox.style.display = 'none'
-        startGameButton.style.display = 'none'
-        b.innerHTML = 'Hide Directions'
-    } else {
-        d.style.display = 'none'
-        wordBox.style.display = 'initial'
-        startGameButton.style.display = 'initial'
-        b.innerHTML = 'View Directions'
-    }
+  if (d.style.display === 'none') {
+    d.style.display = 'initial'
+    wordBox.style.display = 'none'
+    startGameButton.style.display = 'none'
+    b.innerHTML = 'Hide Directions'
+  } else {
+    d.style.display = 'none'
+    wordBox.style.display = 'initial'
+    startGameButton.style.display = 'initial'
+    b.innerHTML = 'View Directions'
+  }
 })
-//next round
-document.querySelector('.replay').addEventListener('click', function(){
-    location.reload()
+// next round
+document.querySelector('.replay').addEventListener('click', function () {
+  location.reload()
 })
 
 // generate array of letters and add click events to them when start calls it
@@ -174,6 +174,35 @@ function setWords () {
     answerHolder.appendChild(div)
   })
 }
+// hide answers if they are letters, display all the other characters
+function hideAnswer (callback) {
+  let word = document.querySelectorAll('.hiddenAnswerWord')
+  let normal = /[a-zA-Z]/
+  theAnswerArray.forEach(function (letter) {
+    if (letter.match(normal)) {
+        let div = document.createElement('div')
+        div.textContent = letter
+        div.classList.add('hiddenAnswer')
+        word[currentWord].appendChild(div)
+        winNumber++
+      } else if (letter === ' ') {
+        currentWord++
+      } else {
+        let div = document.createElement('div')
+        div.textContent = letter
+        div.classList.add('unhiddenAnswer')
+        div.style.borderBottom = 'none'
+        word[currentWord].appendChild(div)
+      }
+  })
+  checkWin() //if string doesn't have anything to guess
+  callback()
+}
+
+function setChars () {
+  chars = document.querySelectorAll('.hiddenAnswer')
+}
+
 // guessing
 let wrongCount = 0
 function pressedLetter () {
@@ -206,34 +235,6 @@ function wrongAnswer (pressed) {
     checkLoss()
   }
 }
-// hide answers if they are letters, display all the other characters
-function hideAnswer (callback) {
-  let word = document.querySelectorAll('.hiddenAnswerWord')
-  let normal = /[a-zA-Z]/
-  theAnswerArray.forEach(function (letter) {
-    if (letter.match(normal)) {
-      let div = document.createElement('div')
-      div.textContent = letter
-      div.classList.add('hiddenAnswer')
-      word[currentWord].appendChild(div)
-      winNumber++
-    } else if (letter === ' ') {
-      currentWord++
-    } else {
-      let div = document.createElement('div')
-      div.textContent = letter
-      div.classList.add('unhiddenAnswer')
-      div.style.borderBottom = 'none'
-      word[currentWord].appendChild(div)
-    }
-  })
-  callback()
-}
-
-function setChars () {
-  chars = document.querySelectorAll('.hiddenAnswer')
-}
-
 function showAnswerLetter () {
   this.classList.add('unhiddenAnswer')
   this.classList.remove('hiddenAnswer')
