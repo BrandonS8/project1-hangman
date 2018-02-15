@@ -10,7 +10,7 @@ When the site is first loaded it will look like this. Before (or while) playing 
 ## Getting Started
 Visit the GitHub Pages site [here](https://brandons8.github.io/project1-hangman/) to play!
 
-To start playing choose who is player 1 and who is player 2. Look at the top right, or center on smaller devices like mobile, to see who's guessing. If there is scores there already press clear scores.
+To start playing choose who is player 1 and who is player 2 (or establish teams where team 1 is player 1, team 2 is player 2). Look at the top right, or center on smaller devices like mobile, to see who's guessing. If there is scores there already press clear scores.
 
 Next the player not guessing enters a word without the other player seeing. 
 The guessing screen will appear, here you click the letters being guessed and try not to fully create your hater or you lose.
