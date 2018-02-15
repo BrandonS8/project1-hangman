@@ -72,3 +72,5 @@ If I come back to this in the future or had more time these are some things I wo
 * Ability to have how every many players you want and choose the turn
 * Better graphics for the hater, maybe more than a stickman
 * Foreign language support, the current letters are only the English alphabet
+* I think it would be fun to add a dunk tank clown style to the hater, so as it is being made it 'speaks' to the user, such as a quote saying 'I can't wait to show twitter your score' when the player is near losing
+ 
