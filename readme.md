@@ -16,19 +16,17 @@ Next the player not guessing enters a word without the other player seeing.
 The guessing screen will appear, here you click the letters being guessed and try not to fully create your hater or you lose.
 
 ## The Process
-My plan for creating this was to follow the MVP, Bronze, Silver, Gold pattern.
+My plan for creating this was to follow the MVP(Bronze), Silver, Gold pattern.
 Broken down this looks like:
 
-**MVP**
+**MVP(Bronze)**
 * User can input a word
 * The word is hidden
 * User can guess letters that appear when guessed
 
-**Bronze**
+**Silver**
 * If user get's all the letters right they win
 * If user presses too many wrong they lose
-
-**Silver**
 * When a wrong letter is used it shows a part of the hater
 * Answer is shown at the end under the You Won or You Lost text
 
@@ -57,7 +55,7 @@ This is the method I used to hide the letters and put them in to the words, simp
    let word = document.querySelectorAll('.hiddenAnswerWord')
   let normal = /[a-zA-Z]/
   theAnswerArray.forEach(function (letter) {
-    if (letter != ' ' && letter != `'` && isNaN(letter) && letter.match(normal)) {
+    if (letter.match(normal)) {
     //create the div and hide the letter
     //append div to current word
     } else if (letter === ' ') {
