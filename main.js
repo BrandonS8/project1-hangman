@@ -1,3 +1,4 @@
+//VARIABLES
 // variables for elements
 const wordBox = document.querySelector('.wordBox')
 const startGameButton = document.querySelector('.startGame')
@@ -38,7 +39,7 @@ if (sessionStorage.getItem('loadedBefore') === null) {
   updatePlayer()
   updateScore()
 }
-// scoring
+// SCORING
 function updateScore () {
   if (currentPlayer === 'player1') {
     sessionStorage.setItem('player1score', score)
@@ -136,7 +137,7 @@ function createLetters () {
     letterHolder.appendChild(div)
   })
 }
-
+// START
 // start game by hiding answer
 // enter key to start from wordbox or use start button
 wordBox.addEventListener('keypress', function (evt) {
@@ -210,7 +211,7 @@ function hideAnswer (callback) {
   let word = document.querySelectorAll('.hiddenAnswerWord')
   let normal = /[a-zA-Z]/
   theAnswerArray.forEach(function (letter) {
-    if (letter != ' ' && letter != `'` && isNaN(letter) && letter.match(normal)) {
+    if (letter.match(normal)) {
       let div = document.createElement('div')
       div.textContent = letter
       div.classList.add('hiddenAnswer')
@@ -280,7 +281,7 @@ function showAnswer () {
     ans.classList.remove('hiddenAnswer')
   })
 }
+// RESOURCES
 // https://www.w3schools.com/jsref/met_loc_reload.asp
 // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_split
 // https://stackoverflow.com/questions/13946651/matching-special-characters-and-letters-in-regex
-// note to self: look more into regexp is may be more useful https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
