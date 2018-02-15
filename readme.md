@@ -65,7 +65,7 @@ This is the method I used to hide the letters and put them in to the words, simp
     //create the div but don't hide the character
     }
    ```
-   A lof of people were not aware of RegExp, which is this part ```/[a-zA-Z]/```. I wasn't aware of this either until after some searching. You can learn more about it here](https://www.w3schools.com/jsref/jsref_obj_regexp.asp) 
+   A lof of people were not aware of RegExp, which is this part ```/[a-zA-Z]/```. I wasn't aware of this either until after some searching. You can learn more about it [here](https://www.w3schools.com/jsref/jsref_obj_regexp.asp) 
 
 ## Future Ideas
 If I come back to this in the future or had more time these are some things I would add or do.
