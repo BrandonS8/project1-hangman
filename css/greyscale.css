@@ -10,7 +10,7 @@ html{
 }
 .buts{
     border: 1px solid #555555;
-    border-radius: none;
+    border-radius: 0;
     background: rgba(0,0,0,0.6);
     text-align: center;
     color: white;
@@ -112,7 +112,7 @@ main{
 }
 .startGame{
     border: none;
-    border-radius: none;
+    border-radius: 0;
     font-size: 30px;
     line-height: 29px;
 }

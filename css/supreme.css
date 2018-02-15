@@ -28,7 +28,7 @@ body{
     background: red;
     text-align: center;
     border: none;
-    border-radius: none;
+    border-radius: 0;
     color: white;
     -webkit-appearance:none;
     font-family: 'Open Sans', sans-serif;
