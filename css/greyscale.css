@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:900');
 @import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
 /* ^ I don't think I've ever used @import in my life 'til now, but google fonts suggested it */
+/* ^^ you can also link it into the head of the html like so: <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Exo" rel="stylesheet"> */
+/* great use of css layout tools - flex AND grid! */
 
-html{
+/* apply universal css rules to body, not the html element */
+body {
     background: black;
     font-family: 'Barlow Condensed', sans-serif;
     margin: 0;
     min-height: 100%;
 }
+
 .buts{
     border: 1px solid #555555;
     border-radius: 0;
@@ -133,6 +137,7 @@ main{
 }
 .showDirections{
     margin-top: 20px;
+    /* ^^ redundant because margin property four lines down */
     line-height: 30px;
     font-size: 15px;
     width: 100%;
@@ -169,6 +174,7 @@ main{
 }
 .head{
     border: 8px solid white;
+    /* instead of applying this separately to several body part classes, you could create another class to that to those body parts and apply the rule once */
     border-radius: 50%;
     grid-column: 2;
     grid-row: 1;
@@ -275,7 +281,7 @@ main{
 }
 
 
-
+/* great job tackling media queries */
 
 @media only screen and (max-width: 700px) {
     .right{

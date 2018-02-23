@@ -2,13 +2,12 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:700i');
 /* using import because it was on google fonts so I tried it */
 
-html{
+/* apply css to body, not html */
+body{
     background: white;
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     min-height: 100%;
-}
-body{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,7 +52,7 @@ header h1{
     background: red;
     font-size: 80px;
     padding: 18px;
-    /* width: 400px; */
+    width: 400px;
     margin: 0 auto;
     color: white;
 }
@@ -177,7 +176,6 @@ main{
     display: none;
     justify-content: center;
     align-items: center;
-    flex: 1;
 }
 .man{
     display: grid;
@@ -289,7 +287,6 @@ main{
     line-height: 10px;
     margin: 5px;
 }
-
 
 @media only screen and (max-width: 700px) {
     .right{

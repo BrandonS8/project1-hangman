@@ -1,3 +1,8 @@
+// Great job using semantic variable names and clear comments throughout your code!
+// Spacing between a line of code and your next comment could clear up which line your comment is referring to
+// There were several times, you defined variables within functions, setting them equal to DOM elements.
+// Use descriptive variable names even when defining local variables in a function, and set global variables when possible to reduce confusion.
+
 // VARIABLES
 // variables for elements
 const wordBox = document.querySelector('.wordBox')
@@ -9,12 +14,15 @@ const man = document.querySelector('.man').children
 // alphabet array for the letter creator
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 // theme array
-themeArray = ['css/supreme.css', 'css/light.css', 'css/greyscale.css']
+const themeArray = ['css/supreme.css', 'css/light.css', 'css/greyscale.css']
+// ^^ always instantiate a new variable with a const, let, or var
+
 // variable to hold answer
 let theAnswer = ''
 let theAnswerArray = []
 let theAnswerArrayWords = []
 let currentWord = 0
+
 // wrong counter
 let wrongLetters = 0
 // right counter
@@ -39,11 +47,13 @@ if (sessionStorage.getItem('loadedBefore') === null) {
   updatePlayer()
   updateScore()
 }
+
 // SCORING
 function updateScore () {
   if (currentPlayer === 'player1') {
     sessionStorage.setItem('player1score', score)
     document.querySelector('.player1score').innerHTML = `Player 1: ${score}`
+    // ^^ above line seems redundant?
   } else {
     sessionStorage.setItem('player2score', score)
   }
@@ -54,6 +64,10 @@ function updateScore () {
   document.querySelector('.player2score').innerHTML = `Player 2: ${savedScore2}`
 }
 
+// best practice is to group all event listeners together at the bottom of the JS file:
+// 1. variable declaration first
+// 2. functions
+// 3. event listeners
 document.querySelector('.clearScores').addEventListener('click', function () {
   score = 0
   sessionStorage.setItem('player1score', 0)
@@ -63,6 +77,9 @@ document.querySelector('.clearScores').addEventListener('click', function () {
   changeLastPlayer()
   updateScore()
 })
+
+// Since you set session storage multiple times, you could consider making a function in which you pass in all the fields to be stored,
+// and then it is able to set all those session storage items in that function. This would cut down on the repetition of 'sessionStorage.setItem()' throughout.
 
 // currentplayer
 function changeLastPlayer () {
@@ -86,6 +103,7 @@ function updatePlayer () {
   }
 }
 
+// The theme changer feature is really cool!
 // theme changer, saves on reload as well
 let currentTheme = 1
 if (sessionStorage.getItem('savedTheme')) {
@@ -94,22 +112,24 @@ if (sessionStorage.getItem('savedTheme')) {
   currentTheme = 1
 }
 document.querySelector('#theme').setAttribute('href', themeArray[currentTheme])
+// ^ I recommend putting this into a function to call here and below, to avoid repetition 10 lines below
 document.querySelector('.themeButton').addEventListener('click', changeTheme)
 function changeTheme () {
   if (currentTheme < (themeArray.length - 1)) {
     currentTheme++
-    sessionStorage.setItem('savedTheme', currentTheme)
   } else {
     currentTheme = 0
-    sessionStorage.setItem('savedTheme', currentTheme)
   }
   document.querySelector('#theme').setAttribute('href', themeArray[currentTheme])
+  sessionStorage.setItem('savedTheme', currentTheme)
 }
+
 // show directions
 document.querySelector('.directions').style.display = 'none' // the click if statement doesnt work the first click without this
 document.querySelector('.showDirections').addEventListener('click', function () {
   let d = document.querySelector('.directions')
   let b = document.querySelector('.showDirections')
+  // ^^ set both of these to a variable to begin with (globally), since you mention/use them more than once
   if (d.style.display === 'none') {
     d.style.display = 'initial'
     wordBox.style.display = 'none'
@@ -122,6 +142,7 @@ document.querySelector('.showDirections').addEventListener('click', function () 
     b.innerHTML = 'View Directions'
   }
 })
+
 // next round
 document.querySelector('.replay').addEventListener('click', function () {
   location.reload()
@@ -131,12 +152,15 @@ document.querySelector('.replay').addEventListener('click', function () {
 function createLetters () {
   alphabet.forEach(function (letter) {
     let div = document.createElement('div')
+    // I recommend using an element more descriptive than just div - even when it's just a local variable in this function.
     div.textContent = letter
+    // ^ I would stay consistent throughout your game using either textContent or innerHTML to add text on the page
     div.classList.add('letter')
     div.addEventListener('click', pressedLetter)
     letterHolder.appendChild(div)
   })
 }
+
 // START
 // start game by hiding answer
 // enter key to start from wordbox or use start button
@@ -146,6 +170,7 @@ wordBox.addEventListener('keypress', function (evt) {
     start()
   }
 })
+// ^^ nice idea to add an event listener for a click and for pressing return
 
 startGameButton.addEventListener('click', start)
 
@@ -166,6 +191,8 @@ function start () {
     alert('Please enter a word')
   }
 }
+// ^ great idea to separate some of the above functionality into functions like setWords(); see if you can separate out even more functions!
+
 // puts the letters into words so they won't get flex-wrapped in a weird way seperated from parts of the word
 function setWords () {
   theAnswerArrayWords.forEach(function (word) {
@@ -174,6 +201,9 @@ function setWords () {
     answerHolder.appendChild(div)
   })
 }
+// ^^ you only need one of these containers for your one hidden answer word.
+// In fact, since it will be empty to start, you could have the div on the page to start with, or set it earlier?
+
 // hide answers if they are letters, display all the other characters
 function hideAnswer (callback) {
   let word = document.querySelectorAll('.hiddenAnswerWord')
@@ -181,6 +211,7 @@ function hideAnswer (callback) {
   theAnswerArray.forEach(function (letter) {
     if (letter.match(normal)) {
         let div = document.createElement('div')
+        // ^^ Use a more descriptive variable name
         div.textContent = letter
         div.classList.add('hiddenAnswer')
         word[currentWord].appendChild(div)
@@ -254,6 +285,7 @@ function checkLoss () {
 
 // adds to the hangman
 function makeMan (value) {
+  // ^^ when defining a function, make the arguments more descriptive!
   man[value].style.opacity = 1
 }
 // displays if user won or lost
@@ -274,6 +306,9 @@ function winLose (value) {
     document.querySelector('.winloss').textContent = `YOU LOSE!`
     showAnswer()
   }
+  // Instead of sending string 'win' or 'lose' through the function, you may want to have booleans set up
+  // (e.g. let wonGame = false and let lostGame = false), then you can set the right boolean to true, depending on the outcome.
+  // Then reset both booleans at the end.
 }
 // shows the answer at end of the game
 function showAnswer () {
