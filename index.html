@@ -10,19 +10,19 @@
 </head>
 <body>
     <div class="content">
-    <button class ='buts themeButton'>Change Theme</button>
-    <div class='scores'>
-            <h1 class='turnTeller'>turn</h1>
-            <h1 class='player1score'>Player 1: 0</h1>
-            <h1 class='player2score'>Player 2: 0</h1>
-            <button class='buts clearScores'>Clear Scores</button>
-    </div>
-    <header>
-        <h1>HaterMaker</h1>
-    </header>
-    <main>
-        <div class='middle'>
-            <div class='answer'>
+        <button class ='buts themeButton'>Change Theme</button>
+        <div class='scores'>
+                <h1 class='turnTeller'>turn</h1>
+                <h1 class='player1score'>Player 1: 0</h1>
+                <h1 class='player2score'>Player 2: 0</h1>
+                <button class='buts clearScores'>Clear Scores</button>
+        </div>
+        <header>
+            <h1>HaterMaker</h1>
+        </header>
+        <main>
+            <div class='middle'>
+                <div class='answer'>
                     <input class='wordBox' type='text' placeholder='Enter a word or phrase'>
                     <input class='buts startGame' type='button' value='START!'>
                     <div class='winloss'><h1></h1></div>
@@ -30,6 +30,7 @@
                     <button class='buts replay'>Next Round</button>
                     <button class='buts showDirections'>View Directions</button>
                     <p class='directions'>Directions:<br>
+                        <!-- ^^ try to stay away from using br in code. Instead you can put an individual p tag around each line, and they will appear on a new line. -->
                         The player that isn't guessing should enter a word or phrase for the guessing player to guess.<br>
                         The guessing player chooses letters to guess.<br>
                         If the letter is right they reveal all uses of that letter in the word or phrase.<br>
@@ -37,22 +38,23 @@
                         If the letter is wrong they add a piece to the hater.<br>
                         If you fully craft your hater you lose. 
                     </p>
-            </div>
-            <div class='right'>
-                <div class='man'>
-                    <div class='head'></div>
-                    <div class='leftarm'>/</div>
-                    <div class='chest'>|</div>
-                    <div class='rightarm'>\</div>
-                    <div class='waist'>|</div>
-                    <div class='leftleg'>/</div>
-                    <div class='rightleg'>\</div>
+                </div>
+                <div class='right'>
+                    <div class='man'>
+                        <div class='head'></div>
+                        <div class='leftarm'>/</div>
+                        <div class='chest'>|</div>
+                        <div class='rightarm'>\</div>
+                        <div class='waist'>|</div>
+                        <div class='leftleg'>/</div>
+                        <div class='rightleg'>\</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class='letters'></div>
-    </main>
-</div>
-<script src='main.js'></script>
+            <div class='letters'></div>
+        </main>
+    </div>
+    <script src='main.js'></script>
+    <!-- ^^ adjusted spacing for consistent indentation among the opening and closing tags of an element -->
 </body>
 </html>
